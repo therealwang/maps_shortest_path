@@ -34,6 +34,10 @@ def distanceMatrix(addresses):
     raw_matrix = dm.distance_matrix(gmaps, addresses, addresses)
     return cleanMatrix(raw_matrix, len(addresses))
 
+def travelingSalesman(dist_array):
+    #Naive - brute force
+    return None
+
 
 def main():
     l = ['3737 Chestnut St, Philadelphia, PA 19104',
