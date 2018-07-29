@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import googlemaps
 from googlemaps import distance_matrix as dm
+from traveling_salesman_toy import *
 
 
 '''
@@ -34,16 +35,9 @@ def distanceMatrix(addresses):
     raw_matrix = dm.distance_matrix(gmaps, addresses, addresses)
     return cleanMatrix(raw_matrix, len(addresses))
 
-def travelingSalesman(dist_array):
-    #Naive - brute force
-    return None
-
-
 def main():
     l = ['3737 Chestnut St, Philadelphia, PA 19104',
          '401 E City Ave, Bala Cynwyd, PA',
          '1900 Arch St, Philadelphia, PA']
     dist, dur = distanceMatrix(l)
     return dist, dur
-    
-print main()
