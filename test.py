@@ -13,3 +13,4 @@ test_array = np.array([[   0.,  810.,  648.],
        [ 630.,  634.,    0.]])
 
 print shortest_path.travelingSalesman_naive(test_array)
+print shortest_path.travelingSalesman_dp(test_array)

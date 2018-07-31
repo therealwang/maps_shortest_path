@@ -19,7 +19,7 @@ TODO: Interpretation of generic names?
 '''
 
 API_KEY = 'YOUR_KEY_HERE'
-gmaps = googlemaps.Client(key=API_KEY)
+#gmaps = googlemaps.Client(key=API_KEY)
 
 def cleanMatrix(d, l):
     dist = np.zeros([l,l])
