@@ -18,7 +18,7 @@ TODO: Generate test cases
 TODO: Interpretation of generic names?
 '''
 
-API_KEY = 'YOUR_KEY_HERE'
+API_KEY = 'YOUR_API_KEY'
 gmaps = googlemaps.Client(key=API_KEY)
 
 def cleanMatrix(d, l):
@@ -38,6 +38,13 @@ def distanceMatrix(addresses):
 def main():
     l = ['3737 Chestnut St, Philadelphia, PA 19104',
          '401 E City Ave, Bala Cynwyd, PA',
-         '1900 Arch St, Philadelphia, PA']
+         '1900 Arch St, Philadelphia, PA',
+         '1406 Gerard St, Rockville, MD',
+         '1600 Pennsylvania Ave NW, Washington, DC',
+         'Atlanta, GA',
+         'Chapel Hill, NC']
     dist, dur = distanceMatrix(l)
     return dist, dur
+
+if __name__ == '__main__':
+    print main()
