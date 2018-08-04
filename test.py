@@ -11,9 +11,9 @@ import timeit
 from test_cases import *
 from shortest_path import *
 
-print travelingSalesman_naive(test_array) 
+print travelingSalesman_naive(test_array, addresses) 
 #2236
-print timeit.timeit('lambda x: travelingSalesman_naive(test_array)', 
+print timeit.timeit('lambda x: travelingSalesman_naive(test_array, addresses)', 
               number = 1000) 
 #0.000242029200308
 
@@ -27,9 +27,9 @@ print timeit.timeit('lambda x: travelingSalesman_dp(test_array)',
 #Naive works better for small n, as expected, what about 7x7?
 
 
-print travelingSalesman_naive(test_array_larger) 
+print travelingSalesman_naive(test_array_larger, addresses_larger) 
 #89779
-print timeit.timeit('lambda x: travelingSalesman_naive(test_array_larger)',
+print timeit.timeit('lambda x: travelingSalesman_naive(test_array_larger, addresses_larger)',
               number = 1000) 
 #0.0001359289
 
