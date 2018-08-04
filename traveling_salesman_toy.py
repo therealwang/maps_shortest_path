@@ -5,6 +5,9 @@ Created on Sun Jul 29 19:42:00 2018
 @author: yuwan
 """
 
+'''
+TODO: For each traveling salesman, print the path
+'''
 import numpy as np
 from sympy.utilities.iterables import multiset_permutations
 
