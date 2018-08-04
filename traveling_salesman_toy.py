@@ -28,6 +28,7 @@ def travelingSalesman_naive(dist_array):
 def travelingSalesman_dp(dist_array):
     #dp approach
     #use a bitmask
+    #O(n*2^n)
     
     n = len(dist_array)
     dp = [[np.inf for i in range(n-1)] for j in range(2**(n-1))]
@@ -48,5 +49,31 @@ def travelingSalesman_dp(dist_array):
     out = [path + dist_array[i+1][0] 
                 for i, path in zip(range(n-1),dp[2**(n-1)-1])]
     return min(out)
+
+def travelingSalesman_nearest(dist_array):
+    #greedy algo from each node
+    #O(n^3), but not always correct
+    n = len(dist_array)
+    out = np.inf
+    for i in range(n):
+        curr = i
+        unvisited = set(range(n))
+        unvisited.remove(i)
+        total_dist = 0
+        while unvisited:
+            min_dist = np.inf
+            next_node = -1
+            for s in unvisited:
+                if dist_array[curr][s] < min_dist:
+                    min_dist = dist_array[curr][s]
+                    next_node = s
+            total_dist += min_dist
+            curr = next_node
+            unvisited.remove(curr)
+        total_dist += dist_array[curr][i]
+        if total_dist < out:
+            out = total_dist
+    return out
+        
                 
     
