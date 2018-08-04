@@ -18,9 +18,9 @@ print timeit.timeit('lambda x: travelingSalesman_naive(test_array, addresses)',
 #0.000242029200308
 
 
-print travelingSalesman_dp(test_array)
+print travelingSalesman_dp(test_array, addresses)
  #2236
-print timeit.timeit('lambda x: travelingSalesman_dp(test_array)', 
+print timeit.timeit('lambda x: travelingSalesman_dp(test_array, addresses)', 
               number = 1000)
 #0.0008329427
 
@@ -34,9 +34,9 @@ print timeit.timeit('lambda x: travelingSalesman_naive(test_array_larger, addres
 #0.0001359289
 
 
-print travelingSalesman_dp(test_array_larger)
+print travelingSalesman_dp(test_array_larger, addresses_larger)
  #2236
-print timeit.timeit('lambda x: travelingSalesman_dp(test_array_larger)', 
+print timeit.timeit('lambda x: travelingSalesman_dp(test_array_larger, addresses_larger)', 
               number = 1000)
 #0.00026921497
 

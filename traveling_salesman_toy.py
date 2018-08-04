@@ -68,8 +68,8 @@ def travelingSalesman_dp(dist_array, addresses):
     out = [path + dist_array[i+1][0] 
                 for i, path in zip(range(n-1),dp[2**(n-1)-1])]
     
-
-    return min(out), dp
+    ind = out.index(min(out))
+    return out[ind], [addresses[int(i)] for i in outstr[2**(n-1)-1][ind].split(',')]
 
 def travelingSalesman_nearest(dist_array):
     #greedy algo from each node
