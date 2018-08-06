@@ -71,7 +71,7 @@ def travelingSalesman_dp(dist_array, addresses):
     ind = out.index(min(out))
     return out[ind], [addresses[int(i)] for i in outstr[2**(n-1)-1][ind].split(',')]
 
-def travelingSalesman_nearest(dist_array):
+def travelingSalesman_nearest(dist_array, addresses):
     #greedy algo from each node
     #O(n^3), but not always correct
     n = len(dist_array)
@@ -81,6 +81,7 @@ def travelingSalesman_nearest(dist_array):
         unvisited = set(range(n))
         unvisited.remove(i)
         total_dist = 0
+        outstr_t = [i]
         while unvisited:
             min_dist = np.inf
             next_node = -1
@@ -90,11 +91,15 @@ def travelingSalesman_nearest(dist_array):
                     next_node = s
             total_dist += min_dist
             curr = next_node
+            outstr_t.append(curr)
             unvisited.remove(curr)
         total_dist += dist_array[curr][i]
         if total_dist < out:
             out = total_dist
-    return out
+            outstr = outstr_t
+    zero_ind = outstr.index(0)
+    outstr = outstr[zero_ind:] + outstr[:zero_ind]
+    return out, [addresses[i] for i in outstr]
         
                 
     

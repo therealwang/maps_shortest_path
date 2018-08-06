@@ -40,8 +40,8 @@ print timeit.timeit('lambda x: travelingSalesman_dp(test_array_larger, addresses
               number = 1000)
 #0.00026921497
 
-print travelingSalesman_nearest(test_array)
-print travelingSalesman_nearest(test_array_larger)
-print timeit.timeit('lambda x: travelingSalesman_nearest(test_array_larger)', 
+print travelingSalesman_nearest(test_array, addresses)
+print travelingSalesman_nearest(test_array_larger, addresses_larger)
+print timeit.timeit('lambda x: travelingSalesman_nearest(test_array_larger, addresses_larger)', 
               number = 1000)
 #doesnt get the right answer, but even for n = 7 is faster
