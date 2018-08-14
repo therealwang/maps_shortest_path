@@ -3,3 +3,4 @@ Backend for using maps API to find best way to get around doing chores
 TODO: efficient TSP algorithm
 TODO: design UI/front-end for app
 TODO: Design interfacing (allow user to choose position on a map?)
+TODO: Use places API, get closing hours for locations if they exist, add closing conditions
