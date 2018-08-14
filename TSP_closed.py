@@ -15,11 +15,13 @@ If there is no valid path, we should return "no path"
 import numpy as np
 
 
-#similar implementation of dp from t_s_t
-def travelingSalesman_dp(dist_array, addresses):
-    #dp approach
-    #use a bitmask
-    #O(n*2^n)
+#similar implementation of dp from 
+
+
+def travelingSalesman_closing(dist_array, addresses, duration, closing):
+    #similar to travelingSalesman_dp, but include inputs for duration and closing
+    #duration will be amount of time spent at each location
+    #closing will be how much time until a store closes
     
     n = len(dist_array)
     dp = [[np.inf for i in range(n-1)] for j in range(2**(n-1))]
@@ -27,7 +29,7 @@ def travelingSalesman_dp(dist_array, addresses):
     dp[0] = [0 for i in range(n-1)]
     for i in range(n-1):
         # initialize dp by going to every possible location first
-        dp[2**i][i] = dist_array[0][i+1]
+        dp[2**i][i] = dist_array[0][i+1] + duration[i]
         outstr[2**i][i] = '0,{}'.format(i+1)
     
     subsets = range(1,2**(n-1))
@@ -49,8 +51,9 @@ def travelingSalesman_dp(dist_array, addresses):
                 #distance from visiting every node in subset except i and ending with k
                 #if the minimum, then C(S,i) is minimum path that starts at 0, 
                 #ends with i, and visits every node in this subset
-                temp = dp[subset - (1<<i)][k] + dist_array[k+1][i+1]
-                if temp < dp[subset][i]:
+                temp = dp[subset - (1<<i)][k] + dist_array[k+1][i+1] + duration[i]
+                if temp < dp[subset][i] and temp < closing[i]:
+                    #only allow a path if we can spend required time before location closes
                     dp[subset][i] = temp
                     outstr[subset][i] = outstr[subset - (1<< i)][k] + ',{}'.format(i+1)
                 
@@ -59,4 +62,7 @@ def travelingSalesman_dp(dist_array, addresses):
                 for i, path in zip(range(n-1),dp[2**(n-1)-1])]
     
     ind = out.index(min(out))
-    return out[ind], [addresses[int(i)] for i in outstr[2**(n-1)-1][ind].split(',')]
+    if min(out) == np.inf:
+        return -1, []
+    else:
+        return out[ind], [addresses[int(i)] for i in outstr[2**(n-1)-1][ind].split(',')]
